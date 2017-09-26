@@ -1,4 +1,5 @@
 #pragma once
+#include <stdio.h>
 #include <stdlib.h>
 #define LIST_INIT_SIZE	100	// 线性表储存空间的初始分配量
 #define LISTINCREMENT	10	// 线性表储存空间的分配增量
@@ -25,20 +26,24 @@ Status InitList_Sq(SqList *L) {
 } 
 
 Status ClearList(SqList *L) {
+	// if (!L->elem) return ERROR;
 	L->length = 0;
 	return OK;
 }
 
 Status ListEmpty(SqList L) {
+	// if (!L.elem) return ERROR;
 	if (L.length == 0) return True;
 	else return False;
 }
 
 Status ListLength(SqList L) {
+	// if (!L.elem) return ERROR;
 	return L.length;
 }
 
 Status GetElem(SqList L, int i, ElemType *e) {
+	// if (!L.elem) return ERROR;
 	if (L.length == 0 || i < 1 || i > L.length)
 		return ERROR;
 	*e = L.elem[i - 1];
@@ -46,6 +51,7 @@ Status GetElem(SqList L, int i, ElemType *e) {
 } 
 
 Status ListPrint_Sq(SqList L) {
+	// if (!L.elem) return ERROR;
 	int i;
 	for (i = 0; i < L.length; i++)
 		printf("%02d: %d\n", i+1, L.elem[i]);
@@ -55,6 +61,7 @@ Status ListPrint_Sq(SqList L) {
 
 Status ListInsert_Sq(SqList *L, int i, ElemType e) {
 	// 在顺序表L中第i个位置之前插入新的元素e
+	// if (!L->elem) return ERROR;
 	if (i < 1 || i >L->length + 1) return ERROR;
 	
 	int k;
@@ -67,6 +74,7 @@ Status ListInsert_Sq(SqList *L, int i, ElemType e) {
 
 Status ListDelete_Sq(SqList *L, int i, ElemType *e) {
 	// 在顺序表L中删除第i个位置的元素，并且返回e值
+	// if (!L->elem) return ERROR;
 	if (i < 1 || i>L->length || L->length == 0) return ERROR;
 	*e = L->elem[i - 1];
 	
@@ -77,39 +85,56 @@ Status ListDelete_Sq(SqList *L, int i, ElemType *e) {
 	return OK;
 } 
 
+void MergeList_Sq(SqList La, SqList Lb, SqList *Lc) {
+	// if (!La.elem) return ERROR;
+	// if (!Lb.elem) return ERROR;
+
+	ElemType *pa = La.elem; ElemType *pb = Lb.elem;
+	Lc->listsize = Lc->length = La.length + Lb.length;
+	ElemType *pc = Lc->elem = (ElemType *)malloc(Lc->listsize * sizeof(ElemType));
+	// if (!Lc.elem) return ERROR;
+	ElemType *pa_last = La.elem + La.length - 1;
+	ElemType *pb_last = Lb.elem + Lb.length - 1;
+	while (pa <= pa_last && pb <= pb_last) {
+		if (*pa <= *pb) *pc++ = *pa++;
+		else *pc++ = *pb++;
+	}
+	while (pa <= pa_last) *pc++ = *pa++;
+	while (pb <= pb_last) *pc++ = *pb++;
+}
+
 
 /* The part is for testing functions.
 
-#include <stdio.h>
 #include "linear_list.h"
 
 int main() {
 
-	printf("Hello!!!Now start the test!\n\n");
+SqList La, Lb, Lc;
+InitList_Sq(&La);
+InitList_Sq(&Lb);
 
-	SqList ll;
-	InitList_Sq(&ll);
-	printf("Linear List has initialized!\n");
-	printf("It's length is %d and it's size is %d.\n\n", ll.length, ll.listsize);
+ListInsert_Sq(&La, 1, 1);
+ListInsert_Sq(&La, 2, 3);
+ListInsert_Sq(&La, 3, 5);
+printf("List a:\n");
+ListPrint_Sq(La);
 
-	ListInsert_Sq(&ll, 1, 1);
-	ListInsert_Sq(&ll, 2, 2);
-	ListInsert_Sq(&ll, 3, 3);
-	printf("1,2,3 have been inserted.\n\n");
+ListInsert_Sq(&Lb, 1, 2);
+ListInsert_Sq(&Lb, 2, 4);
+ListInsert_Sq(&Lb, 3, 6);
+printf("List b:\n");
+ListPrint_Sq(Lb);
 
-	ListPrint_Sq(ll);
+MergeList_Sq(La, Lb, &Lc);
+printf("List c:\n");
+ListPrint_Sq(Lc);
 
-	ElemType delElem;
-	ListDelete_Sq(&ll, 2, &delElem);
-	printf("Ord2. has been deleted.\n");
-	printf("The delElem is %d\n", delElem);
-	ListPrint_Sq(ll);
-
-	ClearList(&ll);
-	printf("The list has been cleared.\n\n");
-
-	if (ListEmpty(ll)) printf("The list is empty now!\n\n");
-
-	return 0;
+printf("Delete 6th number.\n");
+ElemType delElem;
+ListDelete_Sq(&Lc, 6, &delElem);
+ListPrint_Sq(Lc);
+printf("The delElem is %d.\n", delElem);
+return 0;
 }
 */
