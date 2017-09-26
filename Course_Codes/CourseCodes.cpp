@@ -6,6 +6,7 @@
 
 int main()
 {
+	printf("Just for test!\n");
     return 0;
 }
 
