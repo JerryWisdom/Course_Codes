@@ -78,7 +78,7 @@ Status ListDelete_Sq(SqList *L, int i, ElemType *e) {
 } 
 
 
-/* The part is for test.
+/* The part is for testing functions.
 
 #include <stdio.h>
 #include "linear_list.h"
