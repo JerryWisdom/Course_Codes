@@ -27,6 +27,12 @@
     <ClInclude Include="link_list.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="link_list_cpp.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="stdhead.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">

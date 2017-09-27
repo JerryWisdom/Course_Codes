@@ -1,16 +1,12 @@
 #pragma once
 #include <stdio.h>
 #include <stdlib.h>
+#include "stdhead.h"
 #define LIST_INIT_SIZE	100	// 线性表储存空间的初始分配量
 #define LISTINCREMENT	10	// 线性表储存空间的分配增量
-#define OK 1
-#define ERROR 0
-#define True 1
-#define False 0
-typedef int ElemType;
-typedef int Status;
 
-typedef struct {
+
+typedef struct SqList {
 	ElemType *elem;			// 存储空间基址
 	int		length;			// 当前长度
 	int		listsize;		// 当前分配的存储容量（以sizeof(ElemType)为单位）

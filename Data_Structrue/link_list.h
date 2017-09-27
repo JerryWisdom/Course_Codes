@@ -1,12 +1,8 @@
 #pragma once
 #include <stdio.h>
 #include <stdlib.h>
-#define OK 1
-#define ERROR 0
-#define True 1
-#define False 0
-typedef int ElemType;
-typedef int Status;
+#include "stdhead.h"
+
 
 // 线性链表的单链表存储结构
 typedef struct LNode {		

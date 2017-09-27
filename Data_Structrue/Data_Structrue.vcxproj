@@ -152,6 +152,8 @@
     <ClInclude Include="linear_list.h" />
     <ClInclude Include="linear_list_cpp.h" />
     <ClInclude Include="link_list.h" />
+    <ClInclude Include="link_list_cpp.h" />
+    <ClInclude Include="stdhead.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
