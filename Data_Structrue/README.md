@@ -4,11 +4,13 @@ C++代码仅提供头文件，不提供测试用例和 main() 部分。
 请仔细阅读代码顶部头文件、宏定义部分，以免造成误解。  
 由于本人水平有限，不足之处还请指出！  
 
-- [ch02_线性表](./linear_list.h)  
-- [ch02_线性表（C++版本）](./linear_list_cpp.h)  
-- [ch02_链表](./link_list.h)  
-- [ch02_链表（C++版本）](./link_list_cpp.h)  
-- [ch02_静态链表(未测试)](./link_list_static.h)
+- [x] [ch02_线性表](./linear_list.h)  
+- [x] [ch02_线性表（C++版本）](./linear_list_cpp.h)  
+- [x] [ch02_链表](./link_list.h)  
+- [x] [ch02_链表（C++版本）](./link_list_cpp.h)  
+- [x] [ch02_静态链表（未测试）](./link_list_static.h)
+- [ ] ch02_循环链表
+- [ ] ch02_双向链表
 
 # 笔记部分  
 偶尔会有一些笔记放在[Notes目录](./Notes)下面。  
