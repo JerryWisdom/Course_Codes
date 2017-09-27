@@ -104,7 +104,7 @@ void MergeList_Sq(SqList La, SqList Lb, SqList *Lc) {
 }
 
 
-/* The part is for testing functions.
+/********************************************** ≤‚ ‘”√¿˝
 
 #include "linear_list.h"
 
@@ -137,4 +137,4 @@ ListPrint_Sq(Lc);
 printf("The delElem is %d.\n", delElem);
 return 0;
 }
-*/
+**********************************************/

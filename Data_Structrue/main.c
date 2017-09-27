@@ -1,31 +1,37 @@
-#include "linear_list.h"
+#include "link_list.h"
 
 int main() {
-
-	SqList La, Lb, Lc;
-	InitList_Sq(&La);
-	InitList_Sq(&Lb);
-
-	ListInsert_Sq(&La, 1, 1);
-	ListInsert_Sq(&La, 2, 3);
-	ListInsert_Sq(&La, 3, 5);
+	LinkList La;
+	CreateList_L(&La, 0);
+	ListInsert_L(&La, 1, 1);
+	ListInsert_L(&La, 2, 3);
+	ListInsert_L(&La, 3, 5);
 	printf("List a:\n");
-	ListPrint_Sq(La);
+	PrintList_L(La);
+	printf("\n");
 
-	ListInsert_Sq(&Lb, 1, 2);
-	ListInsert_Sq(&Lb, 2, 4);
-	ListInsert_Sq(&Lb, 3, 6);
+	LinkList Lb;
+	CreateList_L(&Lb, 0);
+	ListInsert_L(&Lb, 1, 2);
+	ListInsert_L(&Lb, 2, 4);
+	ListInsert_L(&Lb, 3, 6);
 	printf("List b:\n");
-	ListPrint_Sq(Lb);
+	PrintList_L(Lb);
+	printf("\n");
 
-	MergeList_Sq(La, Lb, &Lc);
-	printf("List c:\n");
-	ListPrint_Sq(Lc);
+	printf("Merge a and b:\n");
+	LinkList Lc;
+	MergeList_L(&La, &Lb, &Lc);
+	PrintList_L(Lc);
+	printf("\n");
 
-	printf("Delete 6th number.\n");
-	ElemType delElem;
-	ListDelete_Sq(&Lc, 6, &delElem);
-	ListPrint_Sq(Lc);
-	printf("The delElem is %d.\n", delElem);
+	ElemType item;
+	GetElem_L(Lc, 3, &item);
+	printf("Get 3rd item: %d\n", item);
+	ListDelete_L(&Lc, 4, &item);
+	printf("Delete 4rd item: %d\n", item);
+	printf("Now Lc is:\n");
+	PrintList_L(Lc);
+
 	return 0;
 }
