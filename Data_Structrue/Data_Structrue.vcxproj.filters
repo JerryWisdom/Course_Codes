@@ -13,36 +13,47 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="资源文件\Week02">
+      <UniqueIdentifier>{69c590f6-fa67-4520-a2a6-07d080221d1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\ch02">
+      <UniqueIdentifier>{193bd1b3-9e05-4337-beda-5dc74ee28268}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="README.md" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="linear_list.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="linear_list_cpp.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="link_list.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="link_list_cpp.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="stdhead.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="link_list_static.h">
-      <Filter>头文件</Filter>
+      <Filter>头文件\ch02</Filter>
+    </ClInclude>
+    <ClInclude Include="linear_list.h">
+      <Filter>头文件\ch02</Filter>
+    </ClInclude>
+    <ClInclude Include="linear_list_cpp.h">
+      <Filter>头文件\ch02</Filter>
+    </ClInclude>
+    <ClInclude Include="link_list.h">
+      <Filter>头文件\ch02</Filter>
     </ClInclude>
     <ClInclude Include="link_list_circular_cpp.h">
-      <Filter>头文件</Filter>
+      <Filter>头文件\ch02</Filter>
+    </ClInclude>
+    <ClInclude Include="link_list_cpp.h">
+      <Filter>头文件\ch02</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Exercises\Week02_Josephus.md">
+      <Filter>资源文件\Week02</Filter>
+    </None>
   </ItemGroup>
 </Project>

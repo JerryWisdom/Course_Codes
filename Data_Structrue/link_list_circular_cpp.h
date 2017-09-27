@@ -82,7 +82,7 @@ int main() {
 	LinkedList<int> linkedlist;
 	int n, m;
 	cin >> n >> m;
-	// n为总人数，m为挑选间隔
+	// n为总人数，m为出局密码
 
 	for (int i = 1; i <= n; i++) {
 		Node<int> *node = new Node<int>(i);

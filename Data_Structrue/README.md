@@ -9,7 +9,7 @@ C++代码仅提供头文件，不提供测试用例和 main() 部分。
 - [x] [ch02_链表](./link_list.h)  
 - [x] [ch02_链表（C++版本）](./link_list_cpp.h)  
 - [x] [ch02_静态链表（未测试）](./link_list_static.h)
-- [x] [ch02_循环链表--约瑟夫问题](./link_list_circular_cpp.h)
+- [x] [ch02_循环链表（C++版本）--约瑟夫环问题](./link_list_circular_cpp.h)
 - [ ] ch02_双向链表
 
 # 笔记部分  
@@ -24,3 +24,5 @@ C++代码仅提供头文件，不提供测试用例和 main() 部分。
 ## 个人总结
 
 # 习题集部分代码（徐老师秘制）
+## 第二周
+- [ ] [约瑟夫环问题](./Exercises/Week02_Josephus.md)  

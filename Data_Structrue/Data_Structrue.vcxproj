@@ -157,6 +157,9 @@
     <ClInclude Include="link_list_static.h" />
     <ClInclude Include="stdhead.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Exercises\Week02_Josephus.md" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
