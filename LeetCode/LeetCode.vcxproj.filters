@@ -13,39 +13,32 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="头文件\ch02">
-      <UniqueIdentifier>{193bd1b3-9e05-4337-beda-5dc74ee28268}</UniqueIdentifier>
+    <Filter Include="Problems">
+      <UniqueIdentifier>{4f10bc81-1b2d-4cc4-a28b-a0181202e9c3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="README.md" />
+    <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="stdhead.h">
+    <ClInclude Include="stdafx.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="link_list_static.h">
-      <Filter>头文件\ch02</Filter>
-    </ClInclude>
-    <ClInclude Include="linear_list.h">
-      <Filter>头文件\ch02</Filter>
-    </ClInclude>
-    <ClInclude Include="linear_list_cpp.h">
-      <Filter>头文件\ch02</Filter>
-    </ClInclude>
-    <ClInclude Include="link_list.h">
-      <Filter>头文件\ch02</Filter>
-    </ClInclude>
-    <ClInclude Include="link_list_circular_cpp.h">
-      <Filter>头文件\ch02</Filter>
-    </ClInclude>
-    <ClInclude Include="link_list_cpp.h">
-      <Filter>头文件\ch02</Filter>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="LeetCode.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Problems\0021.merge-two-sorted-lists.md">
+      <Filter>Problems</Filter>
+    </None>
   </ItemGroup>
 </Project>
