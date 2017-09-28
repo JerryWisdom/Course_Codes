@@ -7,4 +7,4 @@
 #define OVERFLOW -2
 typedef int ElemType;
 typedef int Status;
-typedef int bool;
+typedef int Bool;

@@ -3,121 +3,157 @@
 #include <stdlib.h>
 #include "stdhead.h"
 
-
 // 线性链表的单链表存储结构
-typedef struct LNode {		
+typedef struct LinkNode {		
 	ElemType	data;		// 数据域
-	struct LNode *next;		// 指针域
-} LNode ;
+	struct LinkNode *next;		// 指针域
+} LinkNode ;
 
-typedef struct LNode *LinkList;
+// 带头、尾结点指针及表长的单链表结构
+typedef struct LinkList {
+	struct LinkNode *head;
+	struct LinkNode *tail;
+	int len;
+} LinkList ;
 
-Status GetElem_L(LinkList L, int i, ElemType *e) {
-	// L为带头结点的单链表的头指针
-	// 当第i个元素存在时，其值赋值给e并返回OK，否则返回ERROR
-
-	LinkList p = L->next;	// 声明一个结点p并且指向L的第一个结点
-	int j = 1;				// j为计数器
-	while (p && j < i) {	// 寻找第i个结点
-		p = p->next;		// 让p指向下一个结点
-		j++;
-	}
-	if (!p || j > i) return ERROR;
-	*e = p->data;			// 取第i个元素赋值给e
-	return OK;
+// 单链表初始化
+void InitList_L(LinkList *L) {
+	L->len = 0;
+	L->head = L->tail = (LinkNode*)malloc(sizeof(LinkNode));
+	L->head->next = NULL;
 }
 
-Status ListInsert_L(LinkList *L, int i, ElemType e) {
-	// 在带头结点的单链线性表L中第i个位置之前插入元素e
-
-	LinkList p = *L;
-	int j = 0;
-	while (p && j < i - 1) { // 寻找第i-1个结点
-		p = p->next;
-		j++;
-	}
-	if (!p || j > i - 1) return ERROR;
-	LinkList s = (LinkList)malloc(sizeof(LNode));
-	s->data = e;
-	s->next = p->next;
-	p->next = s;
-	return OK;
-}
-
-Status ListDelete_L(LinkList *L, int i, ElemType *e) {
-	// 在带头结点的单链线性链表L中，删除第i个元素，并由e返回其值
-
-	LinkList p = *L;
-	int j = 0;
-	while (p->next && j < i-1) {
-		p = p->next;
-		j++;
-	}
-	if (!p->next || j > i - 1) return ERROR;
-	LinkList q = p->next;	// 先后顺序不能搞错
-	p->next = q->next;
-	*e = q->data;
-	free(q);				// 让系统回收此结点，释放内存
-	return OK;
-}
-
-void CreateList_L(LinkList *L, int n) {
-	// 逆位序输入n个元素的值，建立带表头结点的单线性链表L
-
-	*L = (LinkList)malloc(sizeof(LNode));
-	(*L)->next = NULL;		// 先建立一个带头结点的单链表
-
-	LinkList p;
-	int i;
-	for (i = n; i > 0; i--) {
-		p = (LinkList)malloc(sizeof(LNode));
-		scanf_s("%d",p->data);
-		p->next = (*L)->next;
-		(*L)->next = p;		// 插入到表头
-	}
-}
-
+// 释放单链表中所有数据结点
 Status ClearList_L(LinkList *L) {
-	// 将L重置为空表
 
-	LinkList p, q;
-	p = (*L)->next;		// p指向第一个结点
+	LinkNode *p = L->head->next, *q;
 	while (p) {
 		q = p->next;
 		free(p);
 		p = q;
 	}
-	(*L)->next = NULL;
+	L->tail = L->head;
+	L->head->next = NULL;
+	L->len = 0;
 	return OK;
 }
 
-void MergeList_L(LinkList *La, LinkList *Lb, LinkList *Lc) {
-	// 已知单链线性链表La和Lb的元素按值非递减排列
-	// 归并La和Lb得到新的单链线性表Lc，Lc的元素也按值非递减排列
+// 销毁单链表
+void DestroyList_L(LinkList *L) {
+	ClearList_L(L);
+	free(L->head);
+	L->head = L->tail = NULL;
+}
 
-	LinkList pa = (*La)->next;
-	LinkList pb = (*Lb)->next;
-	*Lc = *La;
-	LinkList pc = *La;		// 用La的头结点作为Lc的头结点
-							// 注意链表合并改变的是指针指向，无需申请新内存
+// 判断单链表是否为空表
+Bool ListEmpty_L(LinkList L) {
+	if (L.len == 0) return True;
+	else return False;
+}
+
+// 求单链表长度
+int ListLength_L(LinkList L) {
+	return L.len;
+}
+
+// 取单链表中第i个结点的数据信息
+Status GetElem_L(LinkList L, int i, ElemType *e) {
+
+	if (i < 1 || i > L.len) return ERROR;
+	LinkNode *p = L.head->next;	
+	int j = 1;			
+	while (p && j < i) {	
+		p = p->next;		
+		j++;
+	}
+	*e = p->data;			
+	return OK;
+}
+
+// 从第一个位置起查找与e匹配的数据元素，若存在则返回该元素的数据位置
+int LocateElem_L(LinkList *L, ElemType *e,
+	Bool(*compare)(ElemType *a, ElemType *b)) {
+	int i = 1;
+	LinkNode *p = L->head->next;
+	while (p && !compare(&(p->data), e)) {
+		i++;
+		p = p->next;
+	}
+	if (p)
+		return i;
+	return 0;
+}
+
+// 在单链表中第i个数据元素之前插入新的数据元素e（i的合法值为1<=i<=len+1）
+Status ListInsert_L(LinkList *L, int i, ElemType e) {
+
+	if (i < 1 || i > L->len + 1) return ERROR;
+	LinkNode *p, *q;
+	int j = 1;
+
+	q = (LinkNode*)malloc(sizeof(LinkNode));
+	q->data = e;
+	p = L->head;
+
+	while (j < i ) {
+		p = p->next;
+		j++;
+	}
+
+	q->next = p->next;
+	p->next = q;
+	L->len++;
+	return OK;
+}
+
+// 在单链表中删除第i个数据元素并用数据变量e返回其值（i的合法值为1<=i<=len）
+Status ListDelete_L(LinkList *L, int i, ElemType *e) {
+
+	if (i < 1 || i > L->len) return ERROR;
+	LinkNode *p, *q;
+	int j = 1;
+	p = L->head;
+
+	while (j < i) {
+		p = p->next;
+		j++;
+	}
+
+	q = p->next;
+	p->next = q->next;
+	*e = q->data;
+	free(q);
+	L->len--;
+
+	return OK;
+}
+
+// 归并La和Lb得到新的单链线性表Lc，不删除原有的两个链表
+void MergeList_L(LinkList *La, LinkList *Lb, LinkList *Lc) {
+	
+	int len = La->len + Lb->len;
+	LinkNode *pa = La->head->next;
+	LinkNode *pb = Lb->head->next;
+	InitList_L(Lc);
+	LinkNode *p = Lc->head;
 	while (pa && pb) {
 		if (pa->data <= pb->data) {
-			pc->next = pa;
-			pc = pa;
+			p->next = pa;
+			p = pa;
 			pa = pa->next;
 		}
 		else {
-			pc->next = pb;
-			pc = pb;
+			p->next = pb;
+			p = pb;
 			pb = pb->next;
 		}
 	}
-	pc->next = pa ? pa : pb;	// 插入剩余段
-	free(*Lb);		// 释放Lb的头结点
+	p->next = pa ? pa : pb;
+	Lc->len = len;
 }
 
 Status PrintList_L(LinkList L) {
-	LinkList p = L->next;
+	LinkNode *p = L.head->next;
 	int j = 1;
 	while (p) {
 		printf("%02d: %d\n", j++, p->data);
@@ -128,42 +164,41 @@ Status PrintList_L(LinkList L) {
 
 
 /********************************************** 测试用例
-
 #include "link_list.h"
 
 int main() {
-LinkList La;
-CreateList_L(&La, 0);
-ListInsert_L(&La, 1, 1);
-ListInsert_L(&La, 2, 3);
-ListInsert_L(&La, 3, 5);
-printf("List a:\n");
-PrintList_L(La);
-printf("\n");
+	LinkList La;
+	InitList_L(&La);
+	ListInsert_L(&La, 1, 1);
+	ListInsert_L(&La, 2, 3);
+	ListInsert_L(&La, 3, 5);
+	printf("List a:\n");
+	PrintList_L(La);
+	printf("\n");
 
-LinkList Lb;
-CreateList_L(&Lb, 0);
-ListInsert_L(&Lb, 1, 2);
-ListInsert_L(&Lb, 2, 4);
-ListInsert_L(&Lb, 3, 6);
-printf("List b:\n");
-PrintList_L(Lb);
-printf("\n");
+	LinkList Lb;
+	InitList_L(&Lb);
+	ListInsert_L(&Lb, 1, 2);
+	ListInsert_L(&Lb, 2, 4);
+	ListInsert_L(&Lb, 3, 6);
+	printf("List b:\n");
+	PrintList_L(Lb);
+	printf("\n");
 
-printf("Merge a and b:\n");
-LinkList Lc;
-MergeList_L(&La, &Lb, &Lc);
-PrintList_L(Lc);
-printf("\n");
+	printf("Merge a and b:\n");
+	LinkList Lc;
+	MergeList_L(&La, &Lb, &Lc);
+	PrintList_L(Lc);
+	printf("\n");
 
-ElemType item;
-GetElem_L(Lc, 3, &item);
-printf("Get 3rd item: %d\n", item);
-ListDelete_L(&Lc, 4, &item);
-printf("Delete 4rd item: %d\n", item);
-printf("Now Lc is:\n");
-PrintList_L(Lc);
+	ElemType item;
+	GetElem_L(Lc, 3, &item);
+	printf("Get 3rd item: %d\n", item);
+	ListDelete_L(&Lc, 4, &item);
+	printf("Delete 4rd item: %d\n", item);
+	printf("Now Lc is:\n");
+	PrintList_L(Lc);
 
-return 0;
+	return 0;
 }
 **********************************************/
