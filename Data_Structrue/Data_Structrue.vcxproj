@@ -156,6 +156,7 @@
     <ClInclude Include="link_list_cpp.h" />
     <ClInclude Include="link_list_static.h" />
     <ClInclude Include="stdhead.h" />
+    <ClInclude Include="two-way_stack.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

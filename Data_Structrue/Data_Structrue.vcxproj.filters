@@ -16,6 +16,9 @@
     <Filter Include="头文件\ch02">
       <UniqueIdentifier>{193bd1b3-9e05-4337-beda-5dc74ee28268}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\ch03">
+      <UniqueIdentifier>{bd0b914b-519a-41e1-82bc-768d1ea75f3b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="README.md" />
@@ -41,6 +44,9 @@
     </ClInclude>
     <ClInclude Include="link_list_cpp.h">
       <Filter>头文件\ch02</Filter>
+    </ClInclude>
+    <ClInclude Include="two-way_stack.h">
+      <Filter>头文件\ch03</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

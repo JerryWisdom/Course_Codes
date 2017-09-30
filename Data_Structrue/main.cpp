@@ -1,37 +1,23 @@
-#include "link_list.h"
+#include "two-way_stack.h"
 
 int main() {
-	LinkList La;
-	InitList_L(&La);
-	ListInsert_L(&La, 1, 1);
-	ListInsert_L(&La, 2, 3);
-	ListInsert_L(&La, 3, 5);
-	printf("List a:\n");
-	PrintList_L(La);
-	printf("\n");
 
-	LinkList Lb;
-	InitList_L(&Lb);
-	ListInsert_L(&Lb, 1, 2);
-	ListInsert_L(&Lb, 2, 4);
-	ListInsert_L(&Lb, 3, 6);
-	printf("List b:\n");
-	PrintList_L(Lb);
-	printf("\n");
-
-	printf("Merge a and b:\n");
-	LinkList Lc;
-	MergeList_L(&La, &Lb, &Lc);
-	PrintList_L(Lc);
-	printf("\n");
-
-	ElemType item;
-	GetElem_L(Lc, 3, &item);
-	printf("Get 3rd item: %d\n", item);
-	ListDelete_L(&Lc, 4, &item);
-	printf("Delete 4rd item: %d\n", item);
-	printf("Now Lc is:\n");
-	PrintList_L(Lc);
+	sqDoubleStack doge;
+	inistack(&doge);
+	if (empty(doge, 0) && empty(doge, 1))
+		printf("Now the two-way stack is completely empty!\n\n");
+	push(&doge, 0, 1);
+	push(&doge, 0, 3);
+	push(&doge, 0, 5);
+	push(&doge, 1, 2);
+	push(&doge, 1, 4);
+	push(&doge, 1, 6);
+	
+	ElemType e;
+	e = pop(&doge, 0);
+	printf("%d\n\n", e);		// 5
+	e = pop(&doge, 1);
+	printf("%d\n\n", e);		// 6
 
 	return 0;
 }
