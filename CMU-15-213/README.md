@@ -45,13 +45,17 @@ Here are the texts from their slides：
    - Ignorance is not an excuse
 
 
+
+
+And the **Lab Assignments** will use http://csapp.cs.cmu.edu/3e/labs.html for **self-study students** (without solutions. I will upload my notes during my study. 
+
 ## Schedule
 
 Schedule：http://www.cs.cmu.edu/~213/schedule.html
 Book：http://csapp.cs.cmu.edu/
 
 ### Recitation 1: No recitation--Semester starts with first lecture
-- [x] Overview
+- [x] Overview （Reading  1）
 - [ ] Bits, Bytes, & Integers I
 
 ### Recitation 2: No recitation--Labor Day
