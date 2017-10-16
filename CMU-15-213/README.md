@@ -11,6 +11,39 @@
 - **tar** links are to archive files in TAR format. Use the tar command on a linux machine to unpack these
 
 
+## Notice
+
+**All the copy in Github from 15-213's website (like ppt, pdf and so on) will be removed according to the *Cheating/Plagiarism: Description* in the first lecture after I finish my learning.**
+
+Here are the texts from their slides：
+
+- Unauthorized use of information
+
+  - Borrowing code: by copying, retyping, looking at a file
+  - Describing: verbal description of code from one person to another.
+  - Searching the Web for solutions
+  - Copying code from a previous course or online solution
+  - Reusing your code from a previous semester (here or elsewhere)
+    - If specific to 213/513, and you received credit
+- Unauthorized supplying of information
+
+  - Providing copy: Giving a copy of a file to someone
+  - Providing access:
+    - Putting material in unprotected directory
+    - Putting material in unprotected code repository (e.g., Github)
+  - Applies to this term and the future
+    - There is no statute of limitations for academic integrity violations
+
+- What is NOT cheating?
+
+  - Explaining how to use systems or tools
+  - Helping others with high-level design issues
+  - Using code supplied by us
+  - Using code from the CS:APP web site
+
+ - See the course syllabus for details.
+   - Ignorance is not an excuse
+
 
 ## Schedule
 
@@ -18,7 +51,7 @@ Schedule：http://www.cs.cmu.edu/~213/schedule.html
 Book：http://csapp.cs.cmu.edu/
 
 ### Recitation 1: No recitation--Semester starts with first lecture
-- [ ] Overview
+- [x] Overview
 - [ ] Bits, Bytes, & Integers I
 
 ### Recitation 2: No recitation--Labor Day
@@ -72,5 +105,5 @@ Book：http://csapp.cs.cmu.edu/
 - [ ] Thread-Level Parallelism
 - [ ] Future of Computing I
 
-###Recitation 15: Exam review
+### Recitation 15: Exam review
 - [ ] Future of Computing II
