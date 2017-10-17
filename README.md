@@ -12,3 +12,7 @@
 | CMU      | 15-213   | Introduction to Computer Systems         |
 | Stanford | CS229    | Machine Learning                         |
 | Stanford | CS231    | Convolutional Neural Networks for Visual Recognition |
+
+# 代码托管
+
+使用Github + Cloud9 在线ide完成。
